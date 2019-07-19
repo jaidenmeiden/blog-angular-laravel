@@ -9,10 +9,12 @@ export class LoginComponent implements OnInit {
 
   public pageTitle: string;
 
-  constructor() { }
+  constructor() {
+    this.pageTitle = 'Login';
+  }
 
   ngOnInit() {
-    this.pageTitle = 'Login';
+
   }
 
 }
