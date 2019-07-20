@@ -16,10 +16,11 @@ export class AppComponent implements OnInit, DoCheck {
   constructor(
     private _userService: UserService
   ) {
-
+    this.loadUser();
   }
 
   ngOnInit() {
+    console.log('Webapp cargada correctamente!');
   }
 
   ngDoCheck(): void {

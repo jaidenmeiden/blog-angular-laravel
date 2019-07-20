@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*Se ejecuta siempre y cierra sesión solo cuando llega el parametro*/
     this.logout();
   }
 
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('token', this.token);
               localStorage.setItem('identity', JSON.stringify(this.identity));
 
-              //this._router.navigate(['/inicio']);
+              this._router.navigate(['/inicio']);
             }, error => {
               this.status = 'error';
               console.error(error);
@@ -65,9 +66,9 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this._route.params.subscribe(params => {
-      let sure = params['sure'];
+      let logout = params['sure'];
 
-      if(sure == 1) {
+      if(logout == 1) {
         localStorage.removeItem('identity');
         localStorage.removeItem('token');
 
