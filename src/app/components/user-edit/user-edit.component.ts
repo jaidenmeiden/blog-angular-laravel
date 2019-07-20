@@ -29,7 +29,22 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit(form) {
+    this._userService.update(this.token, this.user).subscribe(
+      response => {
+        if(response && response.status == 'success') {
+          this.status = 'success';
 
+          this.identity = response.user;
+          this.user = response.user;
+          localStorage.setItem('identity', JSON.stringify(this.identity));
+        } else {
+          this.status = 'error';
+        }
+      }, error => {
+        this.status = 'error';
+        console.error(error);
+      }
+    );
   }
 
 }

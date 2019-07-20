@@ -1,0 +1,52 @@
+<div class="container-fluid col-md-12 mt-3">
+  <h1>{{pageTitle}}</h1>
+  <hr/>
+
+  <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+    Has actualizado tus datos correctamente!
+  </div>
+
+  <div class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error'">
+    No se han actualizado tus datos!
+  </div>
+
+  <form #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" placeholder="Name">
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+        El nombre no es valido
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input type="text" class="form-control" id="surname"  name="surname" #surname="ngModel" [(ngModel)]="user.surname" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" placeholder="Surname">
+      <small *ngIf="!surname.valid && surname.touched" class="invalid-feedback d-block">
+        Los apellidos no es valido
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+        El email no es valido
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="description">Biografía</label>
+      <textarea class="form-control" id="description"  name="description" #description="ngModel" [(ngModel)]="user.description" required placeholder="Biografía" rows="3"></textarea>
+      <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+        la descripción no es valida
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="image">Imagen</label>
+      <input type="file" class="form-control" id="image" name="image" #image="ngModel" [(ngModel)]="user.image" placeholder="Seleccione la imagen">
+      <small *ngIf="!image.valid && image.touched" class="invalid-feedback d-block">
+        La image no es valida
+      </small>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="userEditForm.invalid">Actualizar</button>
+  </form>
+</div>
