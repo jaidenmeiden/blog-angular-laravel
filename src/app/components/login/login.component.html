@@ -1,4 +1,31 @@
 <div class="container-fluid col-md-12 mt-3">
   <h1>{{pageTitle}}</h1>
   <hr/>
+
+  <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+    Te has identificado correctamente!
+  </div>
+
+  <div class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error'">
+    No te has identificado!
+  </div>
+
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+        El email no es valido
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" #password="ngModel" [(ngModel)]="user.password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" name="password" placeholder="Password">
+      <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+        El password no es valido
+      </small>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Identificarse</button>
+  </form>
 </div>
