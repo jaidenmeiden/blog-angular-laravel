@@ -15,6 +15,14 @@ export class UserEditComponent implements OnInit {
   public status: string;
   public identity;
   public token;
+  public froalaOptions: Object = {
+    placeholder: "Edit Me",
+    events : {
+      'focus' : function(e, editor) {
+        console.log(editor.selection.get());
+      }
+    }
+  };
 
   constructor(
     private _userService: UserService
