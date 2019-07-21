@@ -19,10 +19,10 @@ export class UserEditComponent implements OnInit {
   constructor(
     private _userService: UserService
   ) {
+    this.pageTitle = 'Ajustes de usuario';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.pageTitle = 'Ajustes de usuario';
-    this.user = new User(this.identity.sub, this.identity.name, this.identity.surname, this.identity.email, '', 'ROLE_USER', '', '', '', '', '');
+    this.user = new User(this.identity.sub, this.identity.name, this.identity.surname, this.identity.email, '', 'ROLE_USER', '', '');
   }
 
   ngOnInit() {
@@ -34,8 +34,22 @@ export class UserEditComponent implements OnInit {
         if(response && response.status == 'success') {
           this.status = 'success';
 
-          this.identity = response.user;
-          this.user = response.user;
+          if(response.changes.name){
+            this.user.name = response.changes.name;
+          }
+          if(response.changes.surname){
+            this.user.surname = response.changes.surname;
+          }
+          if(response.changes.email){
+            this.user.email = response.changes.email;
+          }
+          if(response.changes.description){
+            this.user.description = response.changes.description;
+          }
+          if(response.changes.image){
+            this.user.image = response.changes.image;
+          }
+          this.identity = this.user;
           localStorage.setItem('identity', JSON.stringify(this.identity));
         } else {
           this.status = 'error';

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private _route: ActivatedRoute
   ) {
     this.pageTitle = 'Login';
-    this.user = new User(1, '', '', '', '', 'ROLE_USER', '', '', '', '', '');
+    this.user = new User(1, '', '', '', '', 'ROLE_USER', '', '');
   }
 
   ngOnInit() {

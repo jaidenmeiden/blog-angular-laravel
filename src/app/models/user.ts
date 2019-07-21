@@ -7,9 +7,6 @@ export class User {
     public password: string,
     public role: string,
     public description: string,
-    public image: string,
-    public createdAt: any,
-    public updatedAt: any,
-    public rememberToken: string
+    public image: string
   ) {}
 }
