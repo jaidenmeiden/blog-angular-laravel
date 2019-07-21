@@ -42,10 +42,11 @@
     </div>
     <div class="form-group">
       <label for="image">Imagen</label>
-      <input type="file" class="form-control" id="image" name="image" #image="ngModel" [(ngModel)]="user.image" placeholder="Seleccione la imagen">
-      <small *ngIf="!image.valid && image.touched" class="invalid-feedback d-block">
-        La image no es valida
-      </small>
+      <angular-file-uploader
+        [config]="afuConfig"
+        [resetUpload]=resetVar
+        (ApiResponse)="avatarUpload($event)">
+      </angular-file-uploader>
     </div>
     <button type="submit" class="btn btn-success" [disabled]="userEditForm.invalid">Actualizar</button>
   </form>

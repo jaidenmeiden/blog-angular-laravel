@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
+import {global} from '../../services/global';
 
 @Component({
   selector: 'app-user-edit',
@@ -16,11 +17,34 @@ export class UserEditComponent implements OnInit {
   public identity;
   public token;
   public froalaOptions: Object = {
-    placeholder: "Edit Me",
-    events : {
-      'focus' : function(e, editor) {
-        console.log(editor.selection.get());
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+  };
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg, .png, .git, .jpeg",
+    maxSize: "1",
+    uploadAPI:  {
+      url: global.url + 'api/user/upload',
+      headers: {
+        "Authorization" : this._userService.getToken()
       }
+    },
+    theme: "attachPin",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    replaceTexts: {
+      selectFileBtn: 'Select Files',
+      resetBtn: 'Reset',
+      uploadBtn: 'Upload',
+      dragNDropBox: 'Drag N Drop',
+      attachPinBtn: 'Subir avatar de usuario',
+      afterUploadMsg_success: 'Successfully Uploaded !',
+      afterUploadMsg_error: 'Upload Failed !'
     }
   };
 
@@ -67,6 +91,11 @@ export class UserEditComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  avatarUpload(datos){
+    let data = JSON.parse(datos.response);
+    this.user.image = data.image;
   }
 
 }
