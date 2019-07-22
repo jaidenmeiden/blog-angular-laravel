@@ -16,6 +16,8 @@ export class UserEditComponent implements OnInit {
   public status: string;
   public identity;
   public token;
+  public url;
+
   public froalaOptions: Object = {
     charCounterCount: true,
     toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
@@ -54,6 +56,8 @@ export class UserEditComponent implements OnInit {
     this.pageTitle = 'Ajustes de usuario';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.url = global.url;
+
     this.user = new User(this.identity.sub, this.identity.name, this.identity.surname, this.identity.email, '', 'ROLE_USER', '', '');
   }
 
