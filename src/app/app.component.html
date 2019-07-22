@@ -40,7 +40,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Crear entrada</a>
-            <a class="dropdown-item" href="#">Crear categoría</a>
+            <a class="dropdown-item" [routerLink]="['/crear-categoria']">Crear categoría</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Mi perfil</a>
             <a class="dropdown-item" [routerLink]="['/ajustes']">Ajustes</a>
@@ -56,4 +56,10 @@
 
   <!-- La siguiente etiqueta toma la ruta en el navegador y carga el modulo correspondiente a la ruta -->
   <router-outlet></router-outlet>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Master Full Stack. Laravel.</span>
+    </div>
+  </footer>
 </div>
