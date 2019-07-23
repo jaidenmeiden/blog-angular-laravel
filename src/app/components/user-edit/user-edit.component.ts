@@ -20,10 +20,10 @@ export class UserEditComponent implements OnInit {
 
   public froalaOptions: Object = {
     charCounterCount: true,
-    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
   };
   public afuConfig = {
     multiple: false,
@@ -58,7 +58,8 @@ export class UserEditComponent implements OnInit {
     this.token = this._userService.getToken();
     this.url = global.url;
 
-    this.user = new User(this.identity.sub, this.identity.name, this.identity.surname, this.identity.email, '', 'ROLE_USER', '', '');
+    this.user = new User(this.identity.sub, this.identity.name, this.identity.surname, this.identity.email, '', 'ROLE_USER', this.identity.description, '');
+    console.log(this.user);
   }
 
   ngOnInit() {

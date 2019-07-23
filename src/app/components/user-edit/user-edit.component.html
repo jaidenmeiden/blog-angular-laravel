@@ -35,7 +35,7 @@
     </div>
     <div class="form-group">
       <label for="description">Biografía</label>
-      <textarea [froalaEditor]="froalaOptions" class="form-control" id="description"  name="description" #description="ngModel" [(ngModel)]="user.description" placeholder="Biografía" rows="3"></textarea>
+      <textarea [froalaEditor]="froalaOptions" class="form-control" id="description"  name="description" #description="ngModel" [(ngModel)]="user.description" placeholder="Biografía" rows="3">{{ user.description }}</textarea>
       <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
         la descripción no es valida
       </small>
