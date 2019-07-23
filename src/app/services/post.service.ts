@@ -24,13 +24,13 @@ export class PostService {
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', token);
 
-    return this._http.post(this.url + '/api/category', params, {headers: headers});
+    return this._http.post(this.url + '/api/post', params, {headers: headers});
   }
 
   getPosts(token):Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', token);
 
-    return this._http.get(this.url + '/api/category', {headers: headers});
+    return this._http.get(this.url + '/api/post', {headers: headers});
   }
 }

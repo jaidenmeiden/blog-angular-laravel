@@ -10,5 +10,43 @@
     No se ha creado el post!
   </div>
 
+  <form #newPostForm="ngForm" (ngSubmit)="onSubmit(newPostForm)">
+    <div class="form-group">
+      <label for="title">Título</label>
+      <input type="text" class="form-control" id="title"  name="title" #title="ngModel" [(ngModel)]="post.title" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ1234567890 ]+" placeholder="Título">
+      <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+        El titulo no es valido
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="category_id">Categoría</label>
+      <select class="form-control" id="category_id"  name="category_id" #category_id="ngModel" [(ngModel)]="post.category_id" required placeholder="Categoría">
+        <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+      </select>
+      <small *ngIf="!category_id.valid && category_id.touched" class="invalid-feedback d-block">
+        No ha seleccionado la categoría
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="content">Contenido</label>
+      <textarea [froalaEditor]="froalaOptions" class="form-control" id="content"  name="content" #content="ngModel" [(ngModel)]="post.content" placeholder="Biografía" rows="3"></textarea>
+      <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+        la descripción no es valida
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="image">Imagen</label>
 
+      <div *ngIf="post && post.image">
+        <img src="{{ url + 'api/post/image/' + post.image }}" class="avatar_edit" />
+      </div>
+
+      <angular-file-uploader
+        [config]="afuConfig"
+        [resetUpload]=resetVar
+        (ApiResponse)="imagenUpload($event)">
+      </angular-file-uploader>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="newPostForm.invalid">Guardar</button>
+  </form>
 </div>
