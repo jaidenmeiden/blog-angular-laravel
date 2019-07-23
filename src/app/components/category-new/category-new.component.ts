@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {CategoryService} from '../../services/category.service';
 import {Category} from '../../models/category';
-import {User} from '../../models/user';
 
 @Component({
   selector: 'app-category-new',
   templateUrl: './category-new.component.html',
   styleUrls: ['./category-new.component.css'],
-  providers: [UserService]
+  providers: [UserService,CategoryService]
 })
 export class CategoryNewComponent implements OnInit {
 
@@ -16,9 +16,11 @@ export class CategoryNewComponent implements OnInit {
   public category: Category;
   public identity;
   public token;
+  public status: string;
 
   constructor(
     private _userService: UserService,
+    private _categoryService: CategoryService,
     private _router: Router,
     private _route: ActivatedRoute
   ) {
@@ -29,6 +31,23 @@ export class CategoryNewComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit(form) {
+    this._categoryService.store(this.token, this.category).subscribe(
+      response => {
+        if(!response.status || response.status != 'error') {
+          this.status = 'success';
+          this.category = response.category;
+          this._router.navigate(['/inicio']);
+        } else {
+          this.status = 'error';
+        }
+      }, error => {
+        this.status = 'error';
+        console.error(<any>error);
+      }
+    );
   }
 
 }
