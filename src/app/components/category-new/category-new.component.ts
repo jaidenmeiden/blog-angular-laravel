@@ -8,7 +8,7 @@ import {Category} from '../../models/category';
   selector: 'app-category-new',
   templateUrl: './category-new.component.html',
   styleUrls: ['./category-new.component.css'],
-  providers: [UserService,CategoryService]
+  providers: [UserService, CategoryService]
 })
 export class CategoryNewComponent implements OnInit {
 

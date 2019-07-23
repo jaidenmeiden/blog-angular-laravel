@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Category} from '../../models/category';
+import {Category} from '../models/category';
 import {global} from './global';
 
 @Injectable({
@@ -9,7 +9,7 @@ import {global} from './global';
 })
 export class CategoryService {
 
-  public url;
+  public url: string;
 
   constructor(
     public _http: HttpClient /*Cuando se coloca un guión bajo en una propiedad de angular se determina que el final es un servicio*/
