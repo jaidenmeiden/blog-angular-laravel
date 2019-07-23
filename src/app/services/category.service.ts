@@ -9,8 +9,7 @@ import {global} from './global';
 })
 export class CategoryService {
 
-  public identity;
-  public token;
+  public url;
 
   constructor(
     public _http: HttpClient /*Cuando se coloca un guión bajo en una propiedad de angular se determina que el final es un servicio*/
