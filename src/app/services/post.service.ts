@@ -32,4 +32,17 @@ export class PostService {
 
     return this._http.get(this.url + 'api/post', {headers: headers});
   }
+
+  getPost(id):Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + 'api/post/' + id, {headers: headers});
+  }
+
+  imageExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return (http.status !== 404);
+  }
 }
