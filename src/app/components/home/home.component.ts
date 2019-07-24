@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../../models/post';
+import {UserService} from '../../services/user.service';
 import {PostService} from '../../services/post.service';
 import {global} from '../../services/global';
-import {UserService} from '../../services/user.service';
 import {CategoryService} from '../../services/category.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [PostService]
+  providers: [UserService, PostService]
 })
 export class HomeComponent implements OnInit {
 
   public pageTitle: string;
+  public token;
   public url;
   public posts: Array<Post>;
 
   constructor(
+    private _userService: UserService,
     private _postService: PostService
   ) {
     this.pageTitle = 'Inicio';
+    this.token = this._userService.getToken();
     this.url = global.url;
   }
 

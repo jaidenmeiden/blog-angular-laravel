@@ -69,7 +69,6 @@ export class PostNewComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
     this.post = new Post(1, this.identity.sub, 0, '', '', '', '');
-    console.log(this.post);
   }
 
   getCategories() {

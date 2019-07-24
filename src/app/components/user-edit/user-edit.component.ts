@@ -59,7 +59,6 @@ export class UserEditComponent implements OnInit {
     this.url = global.url;
 
     this.user = new User(this.identity.sub, this.identity.name, this.identity.surname, this.identity.email, '', 'ROLE_USER', this.identity.description, '');
-    console.log(this.user);
   }
 
   ngOnInit() {
