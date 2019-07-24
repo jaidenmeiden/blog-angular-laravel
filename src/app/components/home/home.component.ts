@@ -42,4 +42,11 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+  imageExists(url){
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status != 404;
+  }
 }
