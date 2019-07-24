@@ -40,15 +40,17 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   getCategories() {
-    this._categoryService.getCategories(this.token).subscribe(
-      response => {
-        if(response.status == 'success') {
-          this.categories = response.categories;
+    if(this.token != null) {
+      this._categoryService.getCategories(this.token).subscribe(
+        response => {
+          if(response.status == 'success') {
+            this.categories = response.categories;
+          }
+        }, error => {
+          console.error(<any>error);
         }
-      }, error => {
-        console.error(<any>error);
-      }
-    );
+      );
+    }
   }
 
 }

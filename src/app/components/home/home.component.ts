@@ -14,6 +14,7 @@ import {CategoryService} from '../../services/category.service';
 export class HomeComponent implements OnInit {
 
   public pageTitle: string;
+  public identity;
   public token;
   public url;
   public posts: Array<Post>;
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     private _postService: PostService
   ) {
     this.pageTitle = 'Inicio';
+    this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = global.url;
   }
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPosts() {
-    this._postService.getPosts(this.token).subscribe(
+    this._postService.getPosts().subscribe(
       response => {
         if(response.status == 'success') {
           this.posts = response.posts;
@@ -43,10 +45,10 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  imageExists(url){
+  imageExists(url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);
     http.send();
-    return http.status != 404;
+    return (http.status !== 404);
   }
 }
