@@ -3,7 +3,6 @@ import {Post} from '../../models/post';
 import {UserService} from '../../services/user.service';
 import {PostService} from '../../services/post.service';
 import {global} from '../../services/global';
-import {CategoryService} from '../../services/category.service';
 
 @Component({
   selector: 'app-home',
