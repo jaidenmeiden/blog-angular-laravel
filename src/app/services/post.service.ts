@@ -27,6 +27,16 @@ export class PostService {
     return this._http.post(this.url + '/api/post', params, {headers: headers});
   }
 
+  update(token, post):Observable<any> {
+    let json = JSON.stringify(post);
+    let params = 'json='+json;
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token);
+
+    return this._http.put(this.url + '/api/post/' + post.id, params, {headers: headers});
+  }
+
   getPosts():Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -37,12 +47,5 @@ export class PostService {
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
     return this._http.get(this.url + 'api/post/' + id, {headers: headers});
-  }
-
-  imageExists(url) {
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    return (http.status !== 404);
   }
 }

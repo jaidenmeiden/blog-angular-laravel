@@ -29,7 +29,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a [routerLink]="['/detalle-entrada', post.id]" class="btn btn-sm btn-outline-secondary">Leer</a>
-                <a [routerLink]="['/inicio']" class="btn btn-sm btn-outline-secondary" *ngIf="identity && identity.sub == post.user_id">Editar</a>
+                <a [routerLink]="['/editar-entrada', post.id]" class="btn btn-sm btn-outline-secondary" *ngIf="identity && identity.sub == post.user_id">Editar</a>
                 <a [routerLink]="['/inicio']" class="btn btn-sm btn-outline-secondary" *ngIf="identity && identity.sub == post.user_id">Borrar</a>
               </div>
               <small class="text-muted">9 mins</small>

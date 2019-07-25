@@ -4,7 +4,6 @@ import {Post} from '../../models/post';
 import {UserService} from '../../services/user.service';
 import {PostService} from '../../services/post.service';
 import {global} from '../../services/global';
-import {__param} from 'tslib';
 
 @Component({
   selector: 'app-post-detail',
