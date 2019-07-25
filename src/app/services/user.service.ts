@@ -60,6 +60,18 @@ export class UserService {
     return this._http.put(this.url + 'api/user/update', params, {headers: headers});
   }
 
+  getUser(id):Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + 'api/user/detail/' + id, {headers: headers});
+  }
+
+  getPosts(id):Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + 'api/post/user/' + id, {headers: headers});
+  }
+
   getIdentity() {
     let identity = JSON.parse(localStorage.getItem('identity'));
 

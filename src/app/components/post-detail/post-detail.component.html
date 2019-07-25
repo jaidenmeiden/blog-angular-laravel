@@ -20,7 +20,7 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ post.title}}</h5>
-        <h5 class="card-title">{{ post.category.name}} - {{ post.user.name + ' ' + post.user.surname }}</h5>
+        <h5 class="card-title">{{ post.category.name}} - <a [routerLink]="['/perfil', post.user.id]">{{ post.user.name + ' ' + post.user.surname }}</a></h5>
         <p class="card-text" [innerHTML]="post.content"></p>
       </div>
     </div>

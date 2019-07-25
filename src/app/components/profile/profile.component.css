@@ -1,0 +1,11 @@
+.detail_user_mask {
+  width: 70px;
+  height: 70px;
+  border-radius: 900px;
+  overflow: hidden;
+}
+
+.detail_user_mask img {
+  width: 70px;
+  height: 70px;
+}

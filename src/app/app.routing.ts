@@ -14,6 +14,7 @@ import {PostDetailComponent} from './components/post-detail/post-detail.componen
 import {PostEditComponent} from './components/post-edit/post-edit.component';
 import {CategoryDetailComponent} from './components/category-detail/category-detail.component';
 import {IdentityGuard} from './services/identity.guard';
+import {ProfileComponent} from './components/profile/profile.component';
 
 /*Creamos el path para cada uno de los componentes*/
 const appRoutes: Routes = [
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   {path: 'logout/:sure', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
   {path: 'ajustes', component: UserEditComponent, canActivate: [IdentityGuard]},
+  {path: 'perfil/:id', component: ProfileComponent, canActivate: [IdentityGuard]},
   {path: 'crear-categoria', component: CategoryNewComponent, canActivate: [IdentityGuard]},
   {path: 'detalle-categoria/:id', component: CategoryDetailComponent},
   {path: 'crear-entrada', component: PostNewComponent, canActivate: [IdentityGuard]},
