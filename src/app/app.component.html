@@ -21,7 +21,7 @@
             Categorías
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" *ngFor="let category of categories">{{ category.name }}</a>
+            <a class="dropdown-item" [routerLink]="['/detalle-categoria', category.id]" *ngFor="let category of categories">{{ category.name }}</a>
           </div>
         </li>
       </ul>
