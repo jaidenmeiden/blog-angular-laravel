@@ -44,6 +44,16 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  deletePost(id) {
+    this._postService.delete(this.token, id).subscribe(
+      response => {
+        this.getPosts();
+      }, error => {
+        console.error(<any>error);
+      }
+    );
+  }
+
   imageExists(url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);

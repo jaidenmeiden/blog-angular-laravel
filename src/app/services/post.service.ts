@@ -48,4 +48,11 @@ export class PostService {
 
     return this._http.get(this.url + 'api/post/' + id, {headers: headers});
   }
+
+  delete(token, id):Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token);
+
+    return this._http.delete(this.url + 'api/post/' + id, {headers: headers});
+  }
 }
